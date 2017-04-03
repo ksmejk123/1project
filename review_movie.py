@@ -170,7 +170,7 @@ def review_get(keyword,href):
 
 
 def chek_movie(code,dname):
-    key = '60bb37c104a9db27671bbc03aef50b42'
+    key = '--'
     url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?' \
           'key=%s&movieCd=%s' % (key, code)
     res = urlopen(url).read()
