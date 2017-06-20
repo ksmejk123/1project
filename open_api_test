@@ -1,0 +1,29 @@
+from urllib.parse import urlencode
+from urllib.request import urlopen,Request
+import json
+
+u_key = 'insert key'
+url = 'http://e-childschoolinfo.moe.go.kr/api/notice/basicInfo.do'
+p_page = '1'
+c_page = '2'
+#시도 코드
+si_code = '11'
+#시군구 코드
+sg_code = '11140'
+
+params = urlencode({
+    'key' : u_key,
+    'pageCnt' : p_page,
+    'currentPage' : c_page,
+    'sidoCode' : si_code,
+    'sggCode' : sg_code
+})
+params = params.encode('utf-8')
+# req = Request(url, data=params)
+f = urlopen(url,params)
+date = f.read().decode('utf-8')
+json_date = json.loads(date)
+info = json_date['kinderInfo'][0]
+print(info)
+name = info['kindername']
+print(name)
